@@ -1,9 +1,15 @@
 //card flip on click and get id of its parent element
+// add classes open and show to a card when it is clicked
 
 function clickelement (e) {
 	if (e.target.nodeName === 'LI') 
   	{
   		console.log(`Card clicked was ${e.target.id}.`);
+  		let a = e.target;
+  		console.log(a.classList);
+  		a.classList.add("open","show");
+  		console.log(a.classList);
+
   	}
     else 
     {
