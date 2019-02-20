@@ -1,6 +1,29 @@
+//card flip on click and get id of its parent element
+
+function clickelement (e) {
+	if (e.target.nodeName === 'LI') 
+  	{
+  		console.log(`Card clicked was ${e.target.id}.`);
+  	}
+    else 
+    {
+    	console.log('No card was clicked. Please click a card.');
+    }
+}
+
+const deckSel = document.getElementsByClassName('deck')[0];
+deckSel.addEventListener('click', clickelement );
+
+
+
 /*
  * Create a list that holds all of your cards
  */
+ // lists of all cards by types
+ 
+ let closedcards = document.getElementsByClassName('card');
+ let openedcards = document.getElementsByClassName('open');
+ let matchedcards = document.getElementsByClassName('show');
 
 
 /*
