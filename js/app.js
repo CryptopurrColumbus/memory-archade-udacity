@@ -12,6 +12,7 @@
 
 
 let openedcards = [];
+let matchedcards = [];
 
 function clickelement (e) {
 	if (e.target.nodeName === 'LI') {
@@ -26,6 +27,8 @@ function clickelement (e) {
   				h = y.closest('li');
   				g.classList.add("match");
   				h.classList.add("match");
+  				matchedcards.push(openedcards[0]);
+  				matchedcards.push(openedcards[1]);
   			} else {
   				// css or js for showing open show class is not 
   				// working here
@@ -40,8 +43,21 @@ function clickelement (e) {
     	console.log('No card was clicked. Please click a card.');
     }
 }
+
+
+function youwin (e) { 
+	if (matchedcards.length == 16) {
+		alert('you win');
+	}
+} 
+
+
 const deckSel = document.getElementsByClassName('deck')[0];
-deckSel.addEventListener('click', clickelement );
+deckSel.addEventListener('click', clickelement);
+deckSel.addEventListener('click', youwin);
+
+
+
 
 
 
