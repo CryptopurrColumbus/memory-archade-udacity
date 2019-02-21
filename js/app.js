@@ -4,33 +4,38 @@
 
 //  matching two cards
 
+/*
+ * Create a list that holds all of your cards
+ */
 
+ // * Display the cards on the page
+
+
+let openedcards = [];
 
 function clickelement (e) {
-	if (e.target.nodeName === 'LI' 
-		// && ~e.target.classList.contains("open")
-		) {
-  		console.log(`Card clicked was ${e.target.id}.`);
+	if (e.target.nodeName === 'LI') {
   		let a = e.target;
-  		a.classList.add("open","show");
+  		openedcards.push(a);
+  		a.classList.add("open","show");		
   		if (openedcards.length == 2) {
             let x = openedcards[0].getElementsByClassName('fa')[0];
   			let y = openedcards[1].getElementsByClassName('fa')[0];
-  				if (x.className == y.className) {
-  					g = x.closest('li');
-  					h = y.closest('li');
-  					g.classList.add("match");
-  					h.classList.add("match");
-  				} else {
-  					// css or js for showing open show class is not 
-  				    // working here
-  					console.log("no");
-  					g = x.closest('li');
-  					h = y.closest('li');
-                    g.classList.remove("open","show");
-  					h.classList.remove("open","show");
-  				}
-        }
+  			if (x.className == y.className) {
+  			    g = x.closest('li');
+  				h = y.closest('li');
+  				g.classList.add("match");
+  				h.classList.add("match");
+  			} else {
+  				// css or js for showing open show class is not 
+  				// working here
+				g = x.closest('li');
+				h = y.closest('li');
+                g.classList.remove("open","show");
+				h.classList.remove("open","show");
+  			}
+        openedcards = [];
+    	}
   	} else {
     	console.log('No card was clicked. Please click a card.');
     }
@@ -41,18 +46,9 @@ deckSel.addEventListener('click', clickelement );
 
 
 
+
 /*
- * Create a list that holds all of your cards
- */
- // lists of all cards by types
  
- let closedcards = document.getElementsByClassName('card');
- let openedcards = document.getElementsByClassName('open');
- let matchedcards = document.getElementsByClassName('show');
-
-
-/*
- * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
