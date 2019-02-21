@@ -1,24 +1,43 @@
 //card flip on click and get id of its parent element
 // add classes open and show to a card when it is clicked
 
+
+//  matching two cards
+
+
+
 function clickelement (e) {
-	if (e.target.nodeName === 'LI') 
-  	{
+	if (e.target.nodeName === 'LI' 
+		// && ~e.target.classList.contains("open")
+		) {
   		console.log(`Card clicked was ${e.target.id}.`);
   		let a = e.target;
-  		console.log(a.classList);
   		a.classList.add("open","show");
-  		console.log(a.classList);
-
-  	}
-    else 
-    {
+  		if (openedcards.length == 2) {
+            let x = openedcards[0].getElementsByClassName('fa')[0];
+  			let y = openedcards[1].getElementsByClassName('fa')[0];
+  				if (x.className == y.className) {
+  					g = x.closest('li');
+  					h = y.closest('li');
+  					g.classList.add("match");
+  					h.classList.add("match");
+  				} else {
+  					// css or js for showing open show class is not 
+  				    // working here
+  					console.log("no");
+  					g = x.closest('li');
+  					h = y.closest('li');
+                    g.classList.remove("open","show");
+  					h.classList.remove("open","show");
+  				}
+        }
+  	} else {
     	console.log('No card was clicked. Please click a card.');
     }
 }
-
 const deckSel = document.getElementsByClassName('deck')[0];
 deckSel.addEventListener('click', clickelement );
+
 
 
 
