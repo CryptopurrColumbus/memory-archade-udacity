@@ -13,10 +13,13 @@
 
 let openedcards = [];
 let matchedcards = [];
+let clickcount = 0;
 
 function clickelement (e) {
 	if (e.target.nodeName === 'LI') {
-  		let a = e.target;
+		clickcount++;
+		istar();
+        let a = e.target;
   		openedcards.push(a);
   		a.classList.add("open", "show");		
   		if (openedcards.length == 2) {
@@ -59,6 +62,31 @@ function resetdeck() {
 
 }
 
+function removestar2() {
+	let ul = document.getElementsByClassName("stars")[0];
+	if (ul.children.length == 3) {
+		ul.removeChild(ul.children[2]);
+	}
+
+}
+
+function removestar1() {
+	let ul = document.getElementsByClassName("stars")[0];
+	if (ul.children.length == 2) {
+		ul.removeChild(ul.children[1]);
+	}
+
+}
+
+function istar(e) {
+
+    if (clickcount > 4 && clickcount < 8) {
+		removestar2();
+	} else if (clickcount >= 8) {
+		removestar1();
+	}
+
+}
 
 const deckSel = document.getElementsByClassName('deck')[0];
 deckSel.addEventListener('click', clickelement);
@@ -66,13 +94,6 @@ deckSel.addEventListener('click', youwin);
 
 const restartbtn = document.getElementsByClassName('restart')[0];
 restartbtn.addEventListener('click', resetdeck);
-
-
-
-
-
-
-
 
 /*
  
