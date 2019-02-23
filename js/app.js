@@ -66,6 +66,7 @@ function removestar2() {
 	let ul = document.getElementsByClassName("stars")[0];
 	if (ul.children.length == 3) {
 		ul.removeChild(ul.children[2]);
+		document.getElementsByClassName('moves')[0].textContent = "2";
 	}
 
 }
@@ -74,6 +75,7 @@ function removestar1() {
 	let ul = document.getElementsByClassName("stars")[0];
 	if (ul.children.length == 2) {
 		ul.removeChild(ul.children[1]);
+		document.getElementsByClassName('moves')[0].textContent = "1";
 	}
 
 }
