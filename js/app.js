@@ -15,7 +15,18 @@ let openedcards = [];
 let matchedcards = [];
 let clickcount = 0;
 
-function viola () {
+// starts the timer
+
+let timeCount = 0;
+let timerPtr;
+
+function startTimer(){
+	timeCount += 1;
+	timerPtr = setTimeout(startTimer, 1000);
+
+}
+
+function implementshuffle () {
 	let array = [...document.getElementsByClassName('card')];
     let woodoo = document.getElementsByClassName('deck')[0];
     while (woodoo.firstChild) {
@@ -68,7 +79,8 @@ function clickelement (e) {
 
 function youwin (e) { 
 	if (matchedcards.length == 16) {
-		alert('Congratulations! You have won!');
+		alert(`Congratulations! You have won! You took ${timeCount} 
+			seconds to complete the game.`);
 	}
 } 
 
@@ -77,13 +89,28 @@ function resetdeck() {
     for (carddeck of carddecks) {
     	carddeck.classList.remove("open", "show", "match");
     }
+    
+    implementshuffle();
+
+    let ul = document.getElementsByClassName("stars")[0];
+    ul.children[2].style.display = "inline-block"
+    ul.children[1].style.display = "inline-block"
+   
+    clickcount = 0;
+    updatemove();
+
+    timeCount = 0;
+    clearTimeout(timerPtr);
+    startTimer();
+
+    matchedcards = [];
 
 }
 
 function removestar2() {
 	let ul = document.getElementsByClassName("stars")[0];
 	if (ul.children.length == 3) {
-		ul.removeChild(ul.children[2]);
+		ul.children[2].style.display = "none"
 	}
 
 }
@@ -91,16 +118,16 @@ function removestar2() {
 function removestar1() {
 	let ul = document.getElementsByClassName("stars")[0];
 	if (ul.children.length == 2) {
-		ul.removeChild(ul.children[1]);
+		ul.children[1].style.display = "none"
 	}
 
 }
 
 function istar(e) {
 
-    if (clickcount > 4 && clickcount < 8) {
+    if (clickcount > 16 && clickcount < 28) {
 		removestar2();
-	} else if (clickcount >= 8) {
+	} else if (clickcount >= 28) {
 		removestar1();
 	}
 
@@ -127,7 +154,8 @@ deckSel.addEventListener('click', youwin);
 const restartbtn = document.getElementsByClassName('restart')[0];
 restartbtn.addEventListener('click', resetdeck);
 
-document.addEventListener("DOMContentLoaded", viola);
+document.addEventListener("DOMContentLoaded", implementshuffle);
+startTimer();
 
 /*
  
