@@ -15,6 +15,18 @@ let openedcards = [];
 let matchedcards = [];
 let clickcount = 0;
 
+function viola () {
+	let array = [...document.getElementsByClassName('card')];
+    let woodoo = document.getElementsByClassName('deck')[0];
+    while (woodoo.firstChild) {
+    	woodoo.removeChild(woodoo.firstChild);
+	}
+ 	array = shuffle(array);
+	for (element of array) {
+		woodoo.appendChild(element);
+	}
+}
+
 function clickelement (e) {
 	if (e.target.nodeName === 'LI') {
 		clickcount++;
@@ -90,21 +102,6 @@ function istar(e) {
 
 }
 
-const deckSel = document.getElementsByClassName('deck')[0];
-deckSel.addEventListener('click', clickelement);
-deckSel.addEventListener('click', youwin);
-
-const restartbtn = document.getElementsByClassName('restart')[0];
-restartbtn.addEventListener('click', resetdeck);
-
-/*
- 
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -119,6 +116,24 @@ function shuffle(array) {
     return array;
 }
 
+const deckSel = document.getElementsByClassName('deck')[0];
+deckSel.addEventListener('click', clickelement);
+deckSel.addEventListener('click', youwin);
+
+const restartbtn = document.getElementsByClassName('restart')[0];
+restartbtn.addEventListener('click', resetdeck);
+
+document.addEventListener("DOMContentLoaded", viola);
+
+
+/*
+ 
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
+// Shuffle function from http://stackoverflow.com/a/2450976
 
 /*
  * set up the event listener for a card. If a card is clicked:
