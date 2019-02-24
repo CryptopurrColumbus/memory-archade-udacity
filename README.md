@@ -1,20 +1,19 @@
 # Memory Game Project
 
-## Table of Contents
+## Game Setup
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* Clone the project - ```git clone https://github.com/CryptopurrColumbus/memory-archade-udacity.git```
+* Open ```index.html``` in your browser.
 
-## Instructions
+## How To Play The Game
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* Click on the cards to play. When a card is clicked it flips to reveal itself.
+* There are 8 pairs of matching cards.
+* When two similar cards are clicked consequently they get matched. If two cards dont match they are flipped to close again.
+* To complete the game you have to get all the cards to match.
+* You can complete the game in any number of moves but as your number of moves increases your star rating will drop.
+* To reset the game click on the refresh button on the right-top side.
 
-To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
