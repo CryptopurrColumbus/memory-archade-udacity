@@ -27,9 +27,15 @@ function viola () {
 	}
 }
 
+function updatemove() {
+	document.getElementsByClassName('moves')[0].textContent
+	= clickcount;
+}
+
 function clickelement (e) {
 	if (e.target.nodeName === 'LI') {
 		clickcount++;
+		updatemove();
 		istar();
         let a = e.target;
   		openedcards.push(a);
@@ -62,7 +68,7 @@ function clickelement (e) {
 
 function youwin (e) { 
 	if (matchedcards.length == 16) {
-		alert('you win');
+		alert('Congratulations! You have won!');
 	}
 } 
 
@@ -78,7 +84,6 @@ function removestar2() {
 	let ul = document.getElementsByClassName("stars")[0];
 	if (ul.children.length == 3) {
 		ul.removeChild(ul.children[2]);
-		document.getElementsByClassName('moves')[0].textContent = "2";
 	}
 
 }
@@ -87,7 +92,6 @@ function removestar1() {
 	let ul = document.getElementsByClassName("stars")[0];
 	if (ul.children.length == 2) {
 		ul.removeChild(ul.children[1]);
-		document.getElementsByClassName('moves')[0].textContent = "1";
 	}
 
 }
@@ -124,7 +128,6 @@ const restartbtn = document.getElementsByClassName('restart')[0];
 restartbtn.addEventListener('click', resetdeck);
 
 document.addEventListener("DOMContentLoaded", viola);
-
 
 /*
  
